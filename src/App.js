@@ -1,4 +1,4 @@
-import React, {useEffect, createContext, useReducer, useContext, useState} from 'react'
+import React, {useEffect, createContext, useReducer, useContext, useState, useCallback} from 'react'
 import NavBar from './components/Navbar'
 import './App.css'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
