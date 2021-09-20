@@ -13,16 +13,17 @@ export const userContext = createContext()
 const Routing = ({setMovies, movies}) => {
   //const history = useHistory()
   const {dispatch} = useContext(userContext)
+  const stableDispatch = useCallback(dispatch, [])
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"))
-    dispatch({type:"USER", payload:user})
+    stableDispatch({type:"USER", payload:user})
     // if (user) {
     //   console.log(user)
     //   history.push('/')
     // } else {
     //   history.push('/signin')
     // }
-  }, [])
+  }, [stableDispatch])
   return (
     <Switch>
       <Route exact path = "/">

@@ -7,12 +7,14 @@ const MOVIEDB_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popular
 const Home = ({movies, setMovies}) => {
     const [starredMovies, setStarredMovies] = useState([])
 
+    const stableSetMovies = useCallback(setMovies, [])
+
     useEffect(() => {
         fetch(MOVIEDB_API)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                setMovies(data.results)
+                stableSetMovies(data.results)
             })
         const user = JSON.parse(localStorage.getItem("user"))
     
@@ -34,7 +36,7 @@ const Home = ({movies, setMovies}) => {
                 console.log(error)
         });
     
-    }, []);
+    }, [stableSetMovies]);
 
     return (
         <div className = "movie-container">
