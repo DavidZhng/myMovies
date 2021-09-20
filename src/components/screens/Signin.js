@@ -1,11 +1,11 @@
 import React, {useState, useContext} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import { userContext } from '../../App';
 import axios from 'axios';
 import M from 'materialize-css'
 
 const Signin = () => {
-    const {state, dispatch} = useContext(userContext)
+    const {dispatch} = useContext(userContext)
     const history = useHistory()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
