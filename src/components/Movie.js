@@ -1,6 +1,5 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import axios from 'axios';
-import {userContext} from '../App'
 const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
 const setVoteClass = (vote) => {
@@ -14,7 +13,6 @@ const setVoteClass = (vote) => {
 }
 
 const Movie = ({ setStarredMovies, title, poster_path, vote_average, isStarred, isProfile, id}) => {
-    const {state, dispatch} = useContext(userContext)
     const PostData = () => {
         const user = JSON.parse(localStorage.getItem("user"))
         if (isStarred) {

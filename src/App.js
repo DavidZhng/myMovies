@@ -22,7 +22,7 @@ const Routing = ({setMovies, movies}) => {
     } else {
       history.push('/signin')
     }
-  }, [dispatch])
+  }, [dispatch, history])
   return (
     <Switch>
       <Route exact path = "/">
