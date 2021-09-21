@@ -7,7 +7,7 @@ const MOVIEDB_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popular
 
 const Home = ({movies, setMovies}) => {
     const [starredMovies, setStarredMovies] = useState([])
-    const {state, dispatch} = useContext(userContext)
+    const {state} = useContext(userContext)
     useEffect(() => {
         if (state) {
             fetch(MOVIEDB_API)
@@ -33,7 +33,7 @@ const Home = ({movies, setMovies}) => {
                     console.log(error)
             });
         }
-    }, [setMovies]);
+    }, [setMovies, state]);
 
     return (
         <div className = "movie-container">
