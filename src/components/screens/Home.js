@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback} from 'react'
+import React, {useEffect, useState} from 'react'
 import Movie from '../Movie'
 import axios from 'axios';
 
@@ -7,14 +7,12 @@ const MOVIEDB_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popular
 const Home = ({movies, setMovies}) => {
     const [starredMovies, setStarredMovies] = useState([])
 
-    const stableSetMovies = useCallback(setMovies, [])
-
     useEffect(() => {
         fetch(MOVIEDB_API)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                stableSetMovies(data.results)
+                setMovies(data.results)
             })
         const user = JSON.parse(localStorage.getItem("user"))
     
@@ -36,7 +34,7 @@ const Home = ({movies, setMovies}) => {
                 console.log(error)
         });
     
-    }, [stableSetMovies]);
+    }, [setMovies]);
 
     return (
         <div className = "movie-container">

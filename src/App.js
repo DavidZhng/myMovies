@@ -1,4 +1,4 @@
-import React, {useEffect, createContext, useReducer, useContext, useState, useCallback} from 'react'
+import React, {useEffect, createContext, useReducer, useContext, useState} from 'react'
 import NavBar from './components/Navbar'
 import './App.css'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
@@ -13,17 +13,16 @@ export const userContext = createContext()
 const Routing = ({setMovies, movies}) => {
   //const history = useHistory()
   const {dispatch} = useContext(userContext)
-  const stableDispatch = useCallback(dispatch, [])
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"))
-    stableDispatch({type:"USER", payload:user})
+    dispatch({type:"USER", payload:user})
     // if (user) {
     //   console.log(user)
     //   history.push('/')
     // } else {
     //   history.push('/signin')
     // }
-  }, [stableDispatch])
+  }, [dispatch])
   return (
     <Switch>
       <Route exact path = "/">
