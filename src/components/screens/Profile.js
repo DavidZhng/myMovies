@@ -11,12 +11,10 @@ const Profile = () => {
         const credentials = {
             id: user._id
         }
-        console.log(credentials)
         axios
         .post(url, credentials)
         .then((response) => {
             const result = response.data;
-            console.log(result)
             setMovies(result)
             })
             .catch((error) => {
@@ -27,7 +25,7 @@ const Profile = () => {
     return (
         <div className = "movie-container">
         {movies.map((movie) => (
-            <Movie key = {movie.id} {...movie} />
+            <Movie isProfile = {true} key = {movie.id} {...movie} />
         ))}
     </div>
     )

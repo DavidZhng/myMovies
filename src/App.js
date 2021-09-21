@@ -1,7 +1,7 @@
 import React, {useEffect, createContext, useReducer, useContext, useState} from 'react'
 import NavBar from './components/Navbar'
 import './App.css'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom'
 import Home from './components/screens/Home'
 import Signin from './components/screens/Signin'
 import Profile from './components/screens/Profile'
@@ -11,17 +11,17 @@ import {reducer, initialState} from './reducers/userReducer'
 export const userContext = createContext()
 
 const Routing = ({setMovies, movies}) => {
-  //const history = useHistory()
+  const history = useHistory()
   const {dispatch} = useContext(userContext)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"))
     dispatch({type:"USER", payload:user})
-    // if (user) {
-    //   console.log(user)
-    //   history.push('/')
-    // } else {
-    //   history.push('/signin')
-    // }
+    if (user) {
+      console.log(user)
+      history.push('/')
+    } else {
+      history.push('/signin')
+    }
   }, [dispatch])
   return (
     <Switch>

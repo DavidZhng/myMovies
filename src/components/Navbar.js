@@ -18,7 +18,7 @@ const NavBar = ({setMovies}) => {
                             onClick = {() => {
                                 localStorage.clear()
                                 dispatch({type:"CLEAR"})
-                                history.push('/')
+                                history.push('/signin')
                             }}>
                         Logout
                         </button>
@@ -49,7 +49,7 @@ const NavBar = ({setMovies}) => {
     return (
         <nav>
             <div className="nav-wrapper white #00e5ff cyan accent-3" >
-                <Link to= "/" className="brand-logo left">myMovies</Link>
+                <Link to= {state ? "/" : "/signin"} className="brand-logo left">myMovies</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                 {renderList()}
                 </ul>
